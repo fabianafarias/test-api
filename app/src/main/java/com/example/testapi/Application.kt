@@ -1,10 +1,7 @@
 package com.example.testapi
 
 import android.app.Application
-import com.example.testapi.di.userApiModule
-import com.example.testapi.di.userRepositoryModule
-import com.example.testapi.di.userRetrofitModule
-import com.example.testapi.di.userServiceModule
+import com.example.testapi.di.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 
@@ -18,7 +15,8 @@ class Application : Application() {
                     userRetrofitModule,
                     userServiceModule,
                     userApiModule,
-                    userRepositoryModule
+                    userRepositoryModule,
+                    usersViewModelModule
                 )
             )
         }

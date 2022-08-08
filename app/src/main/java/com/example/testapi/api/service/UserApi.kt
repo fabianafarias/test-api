@@ -1,26 +1,26 @@
 package com.example.testapi.api.service
 
-import com.example.testapi.dto.User
+import com.example.testapi.dto.UserData
 
-class UserApi(private val testService: UserService) {
+class UserApi(private val usersService: UsersService) {
 
-    suspend fun getUsers(): UserApiResult {
+    suspend fun getUsers(): UsersApiResult {
         try {
-            val userResponse = testService.getUsers()
+            val userResponse = usersService.getUsers()
             if (userResponse.isSuccessful) {
                 userResponse.body()?.let {
-                    val users: List<User> = it.users
-                    return UserApiResult.Success(users)
+                    val userData: UserData = it.userData
+                    return UsersApiResult.Success(userData)
 
-                } ?: return UserApiResult.Error
+                } ?: return UsersApiResult.Error
             } else {
-                return UserApiResult.Error
+                return UsersApiResult.Error
             }
         } catch (
             e: Exception
         ) {
             e.printStackTrace()
-            return UserApiResult.Error
+            return UsersApiResult.Error
         }
 
     }
